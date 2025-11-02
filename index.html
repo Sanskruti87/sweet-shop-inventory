@@ -1,1 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sweet Bliss Inventory Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      :root {
+        --bg: #fdfaf7;
+        --sidebar-bg: #fef3e2;
+        --primary: #ff7b7b;
+        --secondary: #fff0e6;
+        --text-dark: #333;
+        --text-light: #777;
+        --card-bg: #fff;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text-dark);
+        display: flex;
+        height: 100vh;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 250px;
+        background: var(--sidebar-bg);
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        border-right: 1px solid #f0e4d8;
+      }
+
+      .sidebar h2 {
+        color: var(--primary);
+        margin-bottom: 0.25rem;
+      }
+      .sidebar p {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+      }
+
+      .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: background 0.2s ease;
+      }
+
+      .nav-link.active {
+        background: var(--primary);
+        color: #fff;
+      }
+      .nav-link:hover {
+        background: var(--secondary);
+      }
+
+      /* Main */
+      .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .navbar {
+        background: var(--card-bg);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+      }
+
+      .navbar h1 {
+        font-size: 1.2rem;
+      }
+
+      .content {
+        padding: 2rem;
+        flex: 1;
+        overflow-y: auto;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.25rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .card h3 {
+        font-size: 1rem;
+        color: var(--text-light);
+        margin-bottom: 0.25rem;
+      }
+
+      .card .value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .charts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2rem;
+      }
+
+      .chart-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        color: var(--text-light);
+        border-top: 1px solid #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>Sweet Bliss</h2>
+      <p>Premium Inventory</p>
+
+      <a href="#" class="nav-link active">Dashboard</a>
+      <a href="#" class="nav-link">Inventory</a>
+      <a href="#" class="nav-link">Add Item</a>
+      <a href="#" class="nav-link">Categories</a>
+      <a href="#" class="nav-link">Orders</a>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+      <div class="navbar">
+        <h1>Dashboard</h1>
+        <p>Inventory Management System</p>
+      </div>
+
+      <div class="content">
+        <p>Welcome to Sweet Bliss Inventory Management</p>
+
+        <!-- Summary Cards -->
+        <div class="cards">
+          <div class="card">
+            <h3>Total Items</h3>
+            <div class="value">10</div>
+            <p>Sweet varieties</p>
+          </div>
+          <div class="card">
+            <h3>Total Stock</h3>
+            <div class="value">202</div>
+            <p>Units in inventory</p>
+          </div>
+          <div class="card">
+            <h3>Total Value</h3>
+            <div class="value">₹80,310</div>
+            <p>Inventory value</p>
+          </div>
+          <div class="card">
+            <h3>Low Stock</h3>
+            <div class="value">2</div>
+            <p>Items below 10 units</p>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts">
+          <div class="chart-card">
+            <h3>Stock Distribution by Category</h3>
+            <canvas id="barChart"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>Category Distribution</h3>
+            <canvas id="pieChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        © 2025 Sweet Bliss Inventory | Designed with HTML, CSS & JS
+      </footer>
+    </div>
+
+    <script>
+      // Bar chart
+      const barCtx = document.getElementById("barChart").getContext("2d");
+      new Chart(barCtx, {
+        type: "bar",
+        data: {
+          labels: [
+            "Dry Sweet",
+            "Bengali Sweet",
+            "Traditional",
+            "Milk Sweet",
+            "Syrup-based",
+          ],
+          datasets: [
+            {
+              label: "Stock",
+              data: [20, 65, 30, 47, 40],
+              backgroundColor: "#ff7b7b",
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: { beginAtZero: true },
+          },
+        },
+      });
+
+      // Pie chart
+      const pieCtx = document.getElementById("pieChart").getContext("2d");
+      new Chart(pieCtx, {
+        type: "pie",
+        data: {
+          labels: [
+            "Dry Sweet",
+            "Bengali Sweet",
+            "Traditional",
+            "Milk Sweet",
+            "Syrup-based",
+          ],
+          datasets: [
+            {
+              data: [20, 65, 30, 47, 40],
+              backgroundColor: [
+                "#ffd6cc",
+                "#ffb3b3",
+                "#ffccb3",
+                "#ffe6b3",
+                "#ffcce0",
+              ],
+            },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>
 
