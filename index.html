@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Item | Sweet Shop Inventory</title>
+    <link rel="stylesheet" href="globals.css" />
+    <style>
+      /* Minimal fallback styling if globals.css isn't loaded */
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: #f9f9f9;
+        color: #333;
+      }
+      header,
+      footer {
+        background: #fff;
+        padding: 1rem 2rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      .layout {
+        display: flex;
+        height: 100vh;
+      }
+      .sidebar {
+        width: 250px;
+        background: #222;
+        color: #fff;
+        padding: 1rem;
+        transition: transform 0.3s ease;
+      }
+      .sidebar.hidden {
+        transform: translateX(-100%);
+      }
+      main {
+        flex: 1;
+        padding: 2rem;
+        overflow-y: auto;
+      }
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .muted {
+        color: #777;
+      }
+      form {
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      form input,
+      form button {
+        display: block;
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+      button {
+        background: #0070f3;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #005ad3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="sidebar hidden">
+        <h2>Sidebar</h2>
+        <ul>
+          <li><a href="#" style="color:white;">Dashboard</a></li>
+          <li><a href="#" style="color:white;">Inventory</a></li>
+          <li><a href="#" style="color:white;">Add Item</a></li>
+        </ul>
+      </aside>
+
+      <div style="flex:1; display:flex; flex-direction:column;">
+        <!-- Navbar -->
+        <header>
+          <button id="menuButton">☰</button>
+          <span style="margin-left:1rem; font-weight:bold;">Sweet Shop Inventory</span>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+          <div class="mb-8">
+            <h1>Add New Item</h1>
+            <p class="muted">Add a new sweet item to your inventory</p>
+          </div>
+
+          <form id="itemForm">
+            <input type="text" placeholder="Item Name" required />
+            <input type="number" placeholder="Quantity" required />
+            <input type="text" placeholder="Category" required />
+            <input type="number" placeholder="Price" required />
+            <button type="submit">Add Item</button>
+          </form>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+          <p>© 2025 Sweet Shop Inventory. All rights reserved.</p>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // Sidebar toggle logic
+      const sidebar = document.getElementById("sidebar");
+      const menuButton = document.getElementById("menuButton");
+      menuButton.addEventListener("click", () => {
+        sidebar.classList.toggle("hidden");
+      });
+
+      // Simple form submission
+      document.getElementById("itemForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Item added successfully!");
+        e.target.reset();
+      });
+    </script>
+  </body>
+</html>
+
 
