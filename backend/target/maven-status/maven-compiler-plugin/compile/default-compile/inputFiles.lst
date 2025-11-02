@@ -1,0 +1,14 @@
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\service\ItemService.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\repository\ItemRepository.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\model\Item.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\exception\ResourceNotFoundException.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\service\CategoryService.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\config\WebConfig.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\exception\ValidationException.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\controller\ItemController.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\controller\CategoryController.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\exception\GlobalExceptionHandler.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\exception\ResourceAlreadyExistsException.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\model\Category.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\SweetShopBackendApplication.java
+C:\Users\DEEPALI\OneDrive\Desktop\sweet-shop-inventory (6)\backend\src\main\java\com\sweetshop\repository\CategoryRepository.java
